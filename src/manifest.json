@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "SIV Vote Changer",
+  "version": "1.0",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://siv.org/*"],
+      "js": [
+        "bad-vote.js",
+        "hackState.js",
+        "content-lib.js",
+        "content.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  }
+}
